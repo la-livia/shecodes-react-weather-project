@@ -8,7 +8,7 @@ export default function App() {
         <footer>
           This project was coded by Lívia Laczová and is{" "}
           <a
-            href="https://github.com/la-livia/react-shecodes-weather-project"
+            href="https://github.com/la-livia/shecodes-react-weather-project"
             target="_blank"
             rel="noreferrer"
           >
