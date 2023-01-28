@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import FormattedDate from "./FormattedDate";
 import axios from "axios";
 import "./Weather.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faDroplet } from "@fortawesome/free-solid-svg-icons";
+import { faWind } from "@fortawesome/free-solid-svg-icons";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -37,11 +42,11 @@ export default function Weather(props) {
                 />
                 <div className="input-group-append">
                   <button className="btn form-button icon-button" type="submit">
-                    <i className="fas fa-search"></i>
+                    <FontAwesomeIcon icon={faSearch} />
                   </button>
                 </div>
                 <button className="btn form-button icon-button" type="button">
-                  <i className="fa fa-map-marker"></i>
+                  <FontAwesomeIcon icon={faLocationDot} />
                 </button>
               </div>
             </form>
@@ -64,12 +69,12 @@ export default function Weather(props) {
                 <div class="description">{weatherData.description}</div>
                 <ul>
                   <li>
-                    <i class="fa-solid fa-droplet font-icon"></i>
-                    <span>{weatherData.humidity}</span>%
+                    <FontAwesomeIcon icon={faDroplet} />
+                    <span> {weatherData.humidity}</span>%
                   </li>
                   <li>
-                    <i class="fa-solid fa-wind font-icon"></i>
-                    <span>{Math.round(weatherData.wind)}</span> km/h
+                    <FontAwesomeIcon icon={faWind} />
+                    <span> {Math.round(weatherData.wind)}</span> km/h
                   </li>
                 </ul>
               </div>
@@ -80,7 +85,7 @@ export default function Weather(props) {
     );
   } else {
     const apiKey = "1df0aac02b4f8a54bc1aee5bafade766";
-    let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
