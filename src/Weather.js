@@ -21,7 +21,7 @@ export default function Weather(props) {
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
   }
 
@@ -38,6 +38,19 @@ export default function Weather(props) {
 
   function handleCitySearch(event) {
     setCity(event.target.value);
+  }
+
+  function searchLocation(position) {
+    const apiKey = "1df0aac02b4f8a54bc1aee5bafade766";
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function getCurrentPosition(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchLocation);
   }
 
   if (weatherData.ready) {
@@ -63,7 +76,10 @@ export default function Weather(props) {
                     <FontAwesomeIcon icon={faSearch} />
                   </button>
                 </div>
-                <button className="btn form-button icon-button" type="button">
+                <button
+                  className="btn form-button icon-button"
+                  onClick={getCurrentPosition}
+                >
                   <FontAwesomeIcon icon={faLocationDot} />
                 </button>
               </div>
