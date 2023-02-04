@@ -11,6 +11,7 @@ import WeatherForecast from "./WeatherForecast";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -78,13 +79,13 @@ export default function Weather(props) {
                 </div>
                 <button
                   className="btn form-button icon-button"
+                  type="button"
                   onClick={getCurrentPosition}
                 >
                   <FontAwesomeIcon icon={faLocationDot} />
                 </button>
               </div>
             </form>
-            <div className="error-message"></div>
 
             <WeatherInfo data={weatherData} />
             <WeatherForecast coordinates={weatherData.coordinates} />
