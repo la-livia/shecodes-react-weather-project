@@ -8,15 +8,14 @@ export default function App() {
       <div className="container">
         <Weather defaultCity="Bratislava" />
         <footer>
-          This project was coded by Lívia Laczová and is{" "}
           <a
             href="https://github.com/la-livia/shecodes-react-weather-project"
             target="_blank"
             rel="noreferrer"
           >
-            open sourced
+            Open-source code
           </a>{" "}
-          on GitHub.
+          by Lívia Laczová
         </footer>
       </div>
     </div>
